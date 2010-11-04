@@ -1,11 +1,11 @@
 #include <v8.h>
 #include <node.h>
-#include <iostream>
+#include <string>
 #include <mecab.h>
 #include "node-mecab.h"
 
 using namespace node;
-using namespace v8; 
+using namespace v8;
 using namespace std;
 
 Handle<Value> Tagger::New (const Arguments& args) {
@@ -14,7 +14,13 @@ Handle<Value> Tagger::New (const Arguments& args) {
 	Tagger *p = new Tagger();
 	p->Wrap(args.This());
 
-	p->tagger = MeCab::createTagger((args.Length() >= 1 && args[0]->IsString()) ? *String::Utf8Value(args[0]->ToString()) : "");
+	string clopt = "";
+
+	if (args.Length() >= 1 && args[0]->IsString()) {
+		clopt = *String::Utf8Value(args[0]->ToString());
+	}
+
+	p->tagger = MeCab::createTagger(clopt.c_str());
 
 	return args.This();
 }

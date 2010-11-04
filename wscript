@@ -9,6 +9,8 @@ def configure(conf):
   conf.check_tool("compiler_cxx")
   conf.check_tool("node_addon")
 
+  conf.check_cxx(cxxflags = '-Wall');
+  
   conf.check(lib='mecab', libpath=['/usr/lib', '/usr/local/lib'], uselib_store='MECAB')
 
 def build(bld):

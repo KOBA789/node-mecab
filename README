@@ -8,3 +8,5 @@ node-mecab
 $ node-waf configure build
 
 あとは"./build/default/mecab.node"を適当にコピーして使ってください(やっつけですみません)。
+
+# これをforkしてpackage.jsonくっつけてnpmにでも投げてくれる人が現れないかなー(ﾎﾞｿｯ
